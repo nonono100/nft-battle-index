@@ -55,3 +55,11 @@ if (autoLoadUrl) {
     file && reader.readAsText(file);
   };
 }
+
+
+.catch(err => {
+  console.error(err);
+  handsontableContainer.innerHTML =
+    "<p style='color:red'>Error loading CSV file. Please upload manually.</p>";
+  document.getElementById("input-file").style.display = "block"; // show picker only if needed
+});
