@@ -46,8 +46,14 @@ function renderCSVData(csvText) {
     rowHeaders: true,
     colHeaders: translatedHeaders,
     columnSorting: true,
-    width: "100%",
+
+    // --- ADD/UPDATE THESE THREE LINES ---
+    width: '100%',
+    height: '100%',
+    stretchH: 'all', // This makes columns automatically fill the container width
+
     licenseKey: "non-commercial-and-evaluation",
+    // ... your other options like the 'columns' renderer for images should remain here
   });
 }
 
