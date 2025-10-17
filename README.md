@@ -1,7 +1,3 @@
-# CSV Viewer Online
-### [https://csv-viewer-online.github.io/](https://csv-viewer-online.github.io/)
+# NFT Battle Index
+### [https://nonono100.github.io/nft-battle-index/](https://nonono100.github.io/nft-battle-index/)
 
-### Used plugins:
-
-- [PapaParse](https://github.com/mholt/PapaParse) for parsing CSV
-- [handsontable](https://github.com/handsontable/handsontable) for showing the parsed data as a spreadsheet
