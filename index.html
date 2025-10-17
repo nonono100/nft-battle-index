@@ -1,13 +1,12 @@
 <!doctype html>
-<html lang="en">
+<html lang="ru">
   <head>
     <meta charset="utf-8" />
-    <title>NFT Battle Index</title>
+    <title>Индекс NFT-баттлов</title>
     <link rel="icon" href="favicon.png" />
     <link rel="stylesheet" href="./styles.css" />
-    <meta name="description" content="NFT Battle Index — CSV Data Viewer" />
+    <meta name="description" content="Индекс NFT-баттлов — CSV-просмотрщик" />
 
-    <!-- Handsontable -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/handsontable@13/dist/handsontable.full.min.css"
@@ -18,22 +17,20 @@
     <!-- Lottie loading animation -->
     <div id="loading-container">
       <div id="lottie"></div>
-      <p>Loading NFT Battle Index...</p>
+      <p id="loading-text">Загрузка Индекса NFT-баттлов…</p>
     </div>
 
     <!-- CSV Table -->
     <input type="file" id="input-file" accept=".csv" style="display:none;" />
     <div id="handsontable-container" style="display:none;"></div>
 
-    <!-- JS libraries -->
+    <!-- JS libs -->
     <script src="https://cdn.jsdelivr.net/npm/lottie-web@5"></script>
     <script src="https://cdn.jsdelivr.net/npm/handsontable@13/dist/handsontable.full.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/papaparse@5"></script>
 
-    <!-- Your script -->
-    <script src="./app.js?2"></script>
+    <script src="./app.js?3"></script>
 
-    <!-- Analytics (optional) -->
     <script
       src="https://tinylytics.app/embed/NURzVb_2vN_LkTV_Xtxj.js"
       defer
