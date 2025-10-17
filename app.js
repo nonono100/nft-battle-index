@@ -2,18 +2,24 @@ const input = document.getElementById("input-file");
 const handsontableContainer = document.getElementById("handsontable-container");
 const loadingContainer = document.getElementById("loading-container");
 
-// ✅ Your hosted CSV file URL
 const autoLoadUrl =
   "https://raw.githubusercontent.com/nonono100/no/refs/heads/test/Users_converted.csv";
 
-// ✅ Initialize Lottie animation
-const animation = lottie.loadAnimation({
-  container: document.getElementById("lottie"),
-  renderer: "svg",
-  loop: true,
-  autoplay: true,
-  path: "./lottie.json", // your local animation file
-});
+// --- Reset & play Lottie every load ---
+function playLottie() {
+  if (window.animation) {
+    window.animation.destroy();
+  }
+  window.animation = lottie.loadAnimation({
+    container: document.getElementById("lottie"),
+    renderer: "svg",
+    loop: true,
+    autoplay: true,
+    path:
+      "https://ddejfvww7sqtk.cloudfront.net/nft-content-cache/lottie/EQBG-g6ahkAUGWpefWbx-D_9sQ8oWbvy6puuq78U2c4NUDFS/32b2ca3bcf2d1fb1/lottie.json",
+  });
+}
+playLottie();
 
 function renderCSVData(csvText) {
   const data = Papa.parse(csvText, { header: true, skipEmptyLines: true });
@@ -35,10 +41,6 @@ function renderCSVData(csvText) {
     (h) => headerTranslations[h] || h
   );
 
-  // hide loading animation, show table
-  loadingContainer.style.display = "none";
-  handsontableContainer.style.display = "block";
-
   handsontableContainer.innerHTML = "";
 
   Handsontable(handsontableContainer, {
@@ -47,26 +49,38 @@ function renderCSVData(csvText) {
     colHeaders: translatedHeaders,
     columnSorting: true,
     width: "100%",
+    height: "auto",
+    stretchH: "all",
     licenseKey: "non-commercial-and-evaluation",
   });
 }
 
 function loadCSVFromURL(url) {
-  fetch(url)
+  const startTime = performance.now();
+  fetch(url, { cache: "no-store" })
     .then((response) => {
       if (!response.ok)
         throw new Error("Failed to load CSV: " + response.statusText);
       return response.text();
     })
-    .then((csvText) => renderCSVData(csvText))
+    .then((csvText) => {
+      const elapsed = performance.now() - startTime;
+      const remaining = Math.max(0, 3000 - elapsed); // 3s minimum
+      setTimeout(() => {
+        loadingContainer.style.display = "none";
+        document.body.style.background = "#fff";
+        handsontableContainer.style.display = "block";
+        renderCSVData(csvText);
+      }, remaining);
+    })
     .catch((err) => {
       console.error(err);
       loadingContainer.innerHTML =
-        "<p style='color:red'>Error loading CSV file.</p>";
+        "<p style='color:red'>Ошибка загрузки CSV-файла.</p>";
     });
 }
 
-// ✅ Auto-load CSV or allow manual upload
+// --- Auto or manual load ---
 if (autoLoadUrl) {
   loadCSVFromURL(autoLoadUrl);
 } else {
@@ -74,9 +88,7 @@ if (autoLoadUrl) {
   input.onchange = function () {
     const file = this.files[0];
     const reader = new FileReader();
-    reader.onload = function (e) {
-      renderCSVData(e.target.result);
-    };
+    reader.onload = (e) => renderCSVData(e.target.result);
     file && reader.readAsText(file);
   };
 }
