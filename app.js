@@ -56,7 +56,12 @@ handsontableContainer.style.display = "block";
     data: data.data,
     rowHeaders: true,
     colHeaders: translatedHeaders,
-    columnSorting: true,
+    columnSorting: {
+        initialConfig: {
+            column: 1, // Index of the 'name' column (assuming it's the second data column)
+            sortOrder: 'asc' // 'asc' for ascending (A-Z) or 'desc' for descending (Z-A)
+        }
+    },
     width: '100%',
     height: '100%',
     stretchH: 'all',
