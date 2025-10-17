@@ -8,24 +8,48 @@ html, body {
 }
 
 body {
+  font-family: Montserrat, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background: #111;
+  color: #eee;
+}
+
+/* --- Loading --- */
+#loading-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-family: Montserrat, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  background: #111;
-  color: #eee;
-  overflow-x: hidden;
+  text-align: center;
+  height: 100vh;
+  width: 100%;
 }
 
+#lottie {
+  width: 180px;
+  height: 180px;
+  margin: 20px auto;
+}
+
+#loading-text {
+  font-size: 18px;
+  color: #ccc;
+  margin-top: 12px;
+  letter-spacing: 0.5px;
+}
+
+/* --- Table --- */
 #handsontable-container.handsontable {
-  height: 100%;
-  width: 90%;
+  width: 95%;
   max-width: 1200px;
   margin: 2rem auto;
+  overflow: auto;
 }
 
-/* Sponsors section (kept intact) */
+.handsontable .ht_master .wtHolder {
+  overflow: auto !important;
+}
+
+/* Sponsors (unchanged) */
 .sponsors {
   position: fixed;
   top: 20px;
@@ -70,31 +94,6 @@ body {
   line-height: 1.5;
 }
 
-/* Hide file picker unless needed */
 #input-file {
   display: none;
-}
-
-/* --- Lottie Loading Animation --- */
-#loading-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  height: 100vh;
-  width: 100%;
-}
-
-#lottie {
-  width: 180px;
-  height: 180px;
-  margin: 20px auto;
-}
-
-#loading-container p {
-  font-size: 18px;
-  color: #ccc;
-  margin-top: 10px;
-  letter-spacing: 0.5px;
 }
