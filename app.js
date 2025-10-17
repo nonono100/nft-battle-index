@@ -30,25 +30,6 @@ function renderCSVData(csvText) {
     h => headerTranslations[h] || h
   );
 
-  handsontableContainer.innerHTML = '';
-  handsontableContainer.className = '';
-
-  const inputEl = document.querySelector('input');
-  const sponsorEl = document.querySelector('.sponsors');
-  if (inputEl) inputEl.remove();
-  if (sponsorEl) sponsorEl.remove();
-
-  Handsontable(handsontableContainer, {
-    data: data.data,
-    rowHeaders: true,
-    colHeaders: translatedHeaders,  // use Russian/English mix
-    columnSorting: true,
-    width: '100%',
-    licenseKey: 'non-commercial-and-evaluation',
-  });
-}
-
-
   // reset container
   handsontableContainer.innerHTML = '';
   handsontableContainer.className = '';
@@ -66,6 +47,8 @@ function renderCSVData(csvText) {
     licenseKey: 'non-commercial-and-evaluation',
   });
 }
+
+
 
 function loadCSVFromURL(url) {
   fetch(url)
