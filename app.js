@@ -223,8 +223,8 @@ const translatedHeaders = data.meta.fields.map(
     colHeaders: translatedHeaders,
     columnSorting: {
         initialConfig: {
-            column: 1, // Index of the 'name' column (assuming it's the second data column)
-            sortOrder: 'asc' // 'asc' for ascending (A-Z) or 'desc' for descending (Z-A)
+            column: 14, // Index of the 'name' column (assuming it's the second data column)
+            sortOrder: 'desc' // 'asc' for ascending (A-Z) or 'desc' for descending (Z-A)
         }
     },
     width: '100%',
