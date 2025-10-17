@@ -1,32 +1,42 @@
 <!doctype html>
-<html lang="ru">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Индекс NFT-баттлов</title>
+    <title>NFT Battle Index</title>
     <link rel="icon" href="favicon.png" />
     <link rel="stylesheet" href="./styles.css" />
-    <meta name="description" content="Индекс NFT-баттлов — CSV-просмотрщик" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/handsontable@13/dist/handsontable.full.min.css" />
+    <meta name="description" content="NFT Battle Index — CSV Data Viewer" />
+
+    <!-- Handsontable -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/handsontable@13/dist/handsontable.full.min.css"
+    />
   </head>
 
   <body>
-    <!-- loader overlay (hidden by default, shown by JS) -->
-    <div id="loading-container" aria-hidden="true">
-      <div id="lottie" aria-hidden="true"></div>
-      <p id="loading-text">Загрузка Индекса NFT-баттлов…</p>
+    <!-- Lottie loading animation -->
+    <div id="loading-container">
+      <div id="lottie"></div>
+      <p>Loading NFT Battle Index...</p>
     </div>
 
-    <div class="sponsors"> ... your sponsors ... </div>
+    <!-- CSV Table -->
+    <input type="file" id="input-file" accept=".csv" style="display:none;" />
+    <div id="handsontable-container" style="display:none;"></div>
 
-    <input type="file" id="input-file" accept=".csv">
-    <div id="handsontable-container"></div>
-
-    <!-- libs -->
+    <!-- JS libraries -->
     <script src="https://cdn.jsdelivr.net/npm/lottie-web@5"></script>
     <script src="https://cdn.jsdelivr.net/npm/handsontable@13/dist/handsontable.full.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/papaparse@5"></script>
 
-    <!-- your app -->
-    <script src="./app.js"></script>
+    <!-- Your script -->
+    <script src="./app.js?2"></script>
+
+    <!-- Analytics (optional) -->
+    <script
+      src="https://tinylytics.app/embed/NURzVb_2vN_LkTV_Xtxj.js"
+      defer
+    ></script>
   </body>
 </html>
