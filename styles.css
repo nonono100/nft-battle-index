@@ -1,3 +1,4 @@
+/* --- START: your original CSS (unchanged) --- */
 html, body {
   height: 100%;
   margin: 0;
@@ -64,3 +65,65 @@ body {
 }
 
 #input-file { display: none; }  /* hide file picker at page start */
+/* --- END: original CSS --- */
+
+
+/* ========== APPENDED: loader + optional dark (night) table theme ========== */
+
+/* Loading container (non-invasive) */
+#loading-container {
+  display: none;             /* shown by JS only while loading */
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0,0,0,0.72);
+  backdrop-filter: blur(2px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+#lottie {
+  width: 180px;
+  height: 180px;
+  margin: 10px auto;
+}
+
+#loading-text {
+  font-size: 16px;
+  color: #fff;
+  margin-top: 10px;
+}
+
+/* Ensure Handsontable scroll area keeps its scrollbars */
+.handsontable .ht_master .wtHolder {
+  overflow: auto !important;
+}
+
+/* Optional: "night" theme for the table (applied only when body has .night) */
+body.night .handsontable .htCore {
+  background: #0f0f12;    /* dark table background */
+  color: #e6e6e6;
+}
+
+body.night .handsontable .htCore th,
+body.night .handsontable .htCore thead th {
+  background: #111418;    /* dark header */
+  color: #ddd;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+body.night .handsontable .htCore td {
+  border-right: 1px solid rgba(255,255,255,0.02);
+}
+
+/* small visual nicety: fade in the table after loader */
+.handsontable.fade-in {
+  animation: fadeInTable 240ms ease-in;
+}
+@keyframes fadeInTable {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
